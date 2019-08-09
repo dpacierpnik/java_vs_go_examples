@@ -127,23 +127,23 @@ Instructions:
 
 1. Run the service:
 
-  ```bash
-  go run cmd/go_sample_service.go
-  ```
+   ```bash
+   go run cmd/go_sample_service.go
+   ```
 
 1. Open Activity Monitor and find process called `go_sample_service`.
 
 1. Verify if application is working correctly:
 
-  ```bash
-  curl -H 'Content-Type: application/json' -X POST -d '@docs/assets/sample_payload.json' http://localhost:8080/echo-request
-  ```
+   ```bash
+   curl -H 'Content-Type: application/json' -X POST -d '@docs/assets/sample_payload.json' http://localhost:8080/echo-request
+   ```
 
 1. Generate some load on application:
 
-  ```bash
-  ab -T 'application/json' -p 'docs/assets/sample_payload.json' -n 10000 -c 100 http://localhost:8080/echo-request
-  ```
+   ```bash
+   ab -T 'application/json' -p 'docs/assets/sample_payload.json' -n 10000 -c 100 http://localhost:8080/echo-request
+   ```
 
 ## Simple HTTP client + stubbing
 
