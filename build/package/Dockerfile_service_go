@@ -1,0 +1,26 @@
+# Dockerfile References: https://docs.docker.com/engine/reference/builder/
+FROM golang:1.11-alpine as builder
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+RUN apk --update add ca-certificates
+
+WORKDIR /app
+COPY . .
+
+# Build the Go app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/bin/service ./cmd/go_sample_service.go
+
+######## Start a new stage from scratch #######
+FROM scratch
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
+WORKDIR /app
+
+# Copy the Pre-built binary file from the previous stage
+COPY --from=builder /app/bin/service .
+
+EXPOSE 8080
+
+CMD ["/app/service"]
