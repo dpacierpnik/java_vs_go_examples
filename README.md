@@ -196,12 +196,18 @@ go run cmd/go_sample_service.go
 
 Build docker image with the service, and verify it's size.
 
+Checkout source code:
+
+```bash
+git checkout docker_image
+```
+
 Instructions:
 
 1. Build image for this service:
 
    ```bash
-   docker build -t go_sample_service:1.0.0 -f assets/Dockerfile_service_go ./
+   docker build -t go_sample_service:1.0.0 -f build/package/Dockerfile_service_go ./
    ```
 
 1. Verify the service image size:
