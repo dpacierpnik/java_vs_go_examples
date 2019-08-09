@@ -18,11 +18,14 @@
 
 ## First Go application
 
-1. Go to the project directory:
+1. Go to the project directory, and execute:
 
    ```bash
    go mod init com.jamf.services.java_vs_go
    ```
+   
+   It will initialize go project with `` which describes module name and version of go.
+   It will be also used to manage project dependencies, like `pom.xml` or `build.gradle`.
 
 1. Create directory and file for your application code
 
@@ -31,7 +34,7 @@
    touch go_sample_service.go
    ```
 
-1. Paste the following code:
+1. Paste the following code in `go_sample_service.go`:
 
    ```go
    package main
